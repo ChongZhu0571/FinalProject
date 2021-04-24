@@ -1,0 +1,46 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="display-6" style="font-family: 'Orelega One', cursive; color: #f29672;">My Order</h2>
+@{ int i = 1;
+    if (Model.orders != null)
+    {
+        foreach (var order in Model.orders)
+        {
+            <table class="table table-striped">
+                <tr>
+                    <td>Order @i</td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(o => order.orderNo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(o => order.orderTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(o => order.orderItems)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(o => order.orderStatus)<br/><br/>
+                        <button  class="btn btn-success" onclick="location.href = '@Url.Action("Track","User",new { id=order.orderNo})'" >Track Order</button><br/><br/>
+                        <button  class="btn btn-success" onclick="location.href = '@Url.Action("Cancel","User",new { id=order.orderNo})'" >Cancel</button>
+                    </td>
+                </tr>
+                @{i++;
+                }
+            </table>
+        }
+
+    }
+    else {
+        <h2 style="font-weight:bold">No Order yet!</h2>
+    }
+
+}
+
+

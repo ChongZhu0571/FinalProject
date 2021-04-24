@@ -1,0 +1,40 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Admin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Admin</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th></th>
+    </tr>
+
+    @foreach (var obj in Model.faqs)
+    {
+        <div class="row">
+            <div class="card">
+                <div class="card-header">
+                    <p class="card-text">@Html.DisplayFor(model => obj.Question)</p>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(model => obj.Answer)</p>
+                </div>
+                <div class="card-footer">
+                    @Html.ActionLink("Update", "Update", new { id = obj.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = obj.Id })
+                </div>
+            </div>
+        </div>
+
+
+
+
+    }
+
+</table>

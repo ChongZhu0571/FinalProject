@@ -1,0 +1,48 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron jumbotron-fluid">
+    <div class="container text-center">
+        <h1 class="display-3" style="font-family: 'Orelega One', cursive; color: #f29672;">PRODUCTS</h1>
+        <p class="lead" style="font-family: 'Raleway', sans-serif; color: #f29672;">
+            SuperDamp’s Original & Vintage collection for features high-quality
+            crafted pieces for everyday wear. Designed with an authentic sense of
+            SuperDamp heritage, we’re reconnecting to our trans-Atlantic love affair
+            with youth and rebellion. Explore our reinvented SuperDamp classics like
+            denim jackets and plaid shirts for your easy to wear, care-free style.
+            Shop our latest sweats and t-shirts for our latest handcrafted, unique
+            graphics and styles.
+        </p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        @if (Model.products.Count() > 0)
+        {
+            foreach (var obj in Model.products)
+            {
+                <div class="col-sm-3">
+                    <div class="card mb-2">
+                        <img style="width: 200px; height: 300px; margin-left: auto;margin-right: auto;" class="card-img-top img" src=@obj.imageURL alt="Card image cap">
+                        <div class="card-body">
+                            <h4 class="card-title">@obj.Name</h4>
+                            <h6 class="card-subtitle mb-2 text-muted">@obj.Description</h6>
+                            <p class="card-text">
+                                US $ @obj.Price
+                            </p></div><div class="card-footer">
+                                <button style=" margin: auto" type="submit" class="btn py-2 btn-success w-75 d-flex justify-content-center" onclick="location.href = '@Url.Action("add","Cart",new {ProductId = @obj.Id})'">
+                                    <i class="fas fa-cart-plus"></i>
+                                </button>
+                            
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

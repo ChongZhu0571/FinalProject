@@ -1,0 +1,40 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card">
+    <img class="card-img"
+         src="https://cdn.syncfusion.com/content/images/Careers/career-logo.png"
+         alt="Card image">
+    <div class="card-img-overlay">
+        <h1 class="display-5" style="font-family: 'Orelega One', cursive;">This is my caeer.</h1>
+        <h1 class="display-5" style="font-family: 'Orelega One', cursive;">This is my SuperDamp</h1>
+    </div>
+</div>
+
+<div class="container">
+    @if (Model.careers.Count() > 0)
+    {
+        foreach (var obj in Model.careers)
+        {
+            <div class="row">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <span style="color: #fc5203;">Job Title:</span> @obj.jobTitle
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text"><span style="color: #fc5203;">Type:</span> @obj.Type</p>
+                        <p class="card-text"><span style="color: #fc5203;">Reference:</span> @obj.Reference</p>
+                        <p class="card-text"><span style="color: #fc5203;">Hours:</span> @obj.Hours</p>
+                        <p class="card-text"><span style="color: #fc5203;">Location:</span> @obj.Location</p>
+                        <p class="card-text"><span style="color: #fc5203;">Role Description:</span> @obj.roleDescription</p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>

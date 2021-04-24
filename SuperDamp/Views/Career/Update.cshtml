@@ -1,0 +1,41 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Update</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+    <div class="form-horizontal">
+        <h4>Career</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(obj => obj.career.Id);
+        @Html.TextAreaFor(obj => obj.career.jobTitle, new { @value = Model.career.jobTitle })
+        @Html.TextAreaFor(obj => obj.career.Type, new { @value = Model.career.Type })
+        @Html.TextAreaFor(obj => obj.career.Reference, new { @value = Model.career.Reference })
+        @Html.TextAreaFor(obj => obj.career.Location, new { @value = Model.career.Location })
+        @Html.TextAreaFor(obj => obj.career.Hours, new { @value = Model.career.Hours })
+        @Html.TextAreaFor(obj => obj.career.roleDescription, new { @value = Model.career.roleDescription })
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Admin")
+    </div>
+</body>
+</html>

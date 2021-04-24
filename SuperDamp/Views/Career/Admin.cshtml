@@ -1,0 +1,56 @@
+﻿@model SuperDamp.Models.modelAdaptor
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Admin</title>
+</head>
+<body>
+    <div class="jumbotron">
+        <h1 class="display-3">Admin Page for Careers</h1>
+
+    </div>
+    <div class="card">
+        <img class="card-img"
+             src="https://cdn.syncfusion.com/content/images/Careers/career-logo.png"
+             alt="Card image">
+        <div class="card-img-overlay">
+            <h1 class="card-text font-weight-bolder">This is my caeer.</h1>
+            <h1 class="card-text font-weight-bolder">This is my SuperDamp</h1>
+        </div>
+    </div>
+    @Html.ActionLink("Create", "Create")
+    <div class="container">
+        @if (Model.careers.Count() > 0)
+        {
+            foreach (var obj in Model.careers)
+            {
+                <div class="row">
+                    <div class="card">
+                        <div class="card-header">
+                            <span style="color: #fc5203;">Job Title:</span> @obj.jobTitle
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><span style="color: #fc5203;">Type:</span> @obj.Type</p>
+                            <p class="card-text"><span style="color: #fc5203;">Reference:</span> @obj.Reference</p>
+                            <p class="card-text"><span style="color: #fc5203;">Hours:</span> @obj.Hours</p>
+                            <p class="card-text"><span style="color: #fc5203;">Location:</span> @obj.Location</p>
+                            <p class="card-text"><span style="color: #fc5203;">Role Description:</span> @obj.roleDescription</p>
+
+                        </div>
+                        <div class="card-footer">
+                            @Html.ActionLink("Update", "Update", new { id = obj.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = obj.Id })
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</body>
+</html>

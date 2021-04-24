@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SuperDamp</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/fontawesome/css/all.css" />
+    <link rel="stylesheet" href="~/Content/Site.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&family=Raleway:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning border-bottom box-shadow mb-3">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                @Html.ActionLink("SuperDamp Official", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row float-left">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">                            
+                            <button type="button" class="btn bg-warning">
+                                @Html.ActionLink("Home", "Index", "Home")
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn bg-warning">
+                                @Html.ActionLink("Product", "Index", "Product")
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn bg-warning">
+                                @Html.ActionLink("FAQ", "Index", "FAQ")
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn bg-warning">
+                                @Html.ActionLink("Career", "Index", "Career")
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="btn bg-warning">
+                                @Html.ActionLink("Message", "Index", "Message")
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                @*  Login textbox if there is no user login*@
+                @if (Session["username"] == null)
+                {
+                    <div class="navbar-right ">
+                        <button type="submit" class="btn btn-warning" onclick="location.href = '@Url.Action("Login","User")'">Sign in</button>
+                        <button type="submit" class="btn btn-warning " onclick="location.href = '@Url.Action("Register","User")'">Register</button>
+                    </div>
+                }
+                @*Display User menu and cart icon after login*@
+                else
+                {
+
+                <div class="dropdown mr-3">
+                    <button class="btn btn-secondary dropdown-toggle"
+                            type="button" id="dropdownMenu1" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                        @Session["Username"]
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <a class="dropdown-item" href="@Url.Action("Profile","User")">My profile</a>
+                        <a class="dropdown-item" href="@Url.Action("Order","User")">My orders</a>
+                        <a class="dropdown-item" href='@Url.Action("Logout","User")'>Log out</a>
+                    </div>
+                </div>
+                <div>
+                    <button type="button" class="btn bg-warning" onclick="location.href = '@Url.Action("Index","Cart")'">
+                        <i class="fas fa-shopping-cart" ></i>
+                    </button>
+                </div>
+                }
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <hr />
+    <!-- Footer -->
+    <footer class="page-footer font-small pt-4">
+
+        <!-- Footer Links -->
+        <div class="container-fluid text-center text-md-left">
+
+            <!-- Grid row -->
+            <div class="row">
+
+                <!-- Grid column -->
+                <div class="col-md-6 mt-md-0 mt-3">
+
+                    <!-- Content -->
+                    <h6 class="text-uppercase" style="font-family: 'Orelega One', cursive;">&copy; @DateTime.Now.Year - SuperDamp</h6>
+                    <p style="font-family: 'Raleway', sans-serif;">Thank you so much to shop with us. Have a look at your strong business partners! </p>
+
+                </div>
+                <!-- Grid column -->
+
+                <hr class="clearfix w-100 d-md-none pb-3">
+
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase" style="font-family: 'Orelega One', cursive;">Payments</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fab fa-cc-visa"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-cc-apple-pay"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-cc-paypal"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-alipay"></i>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+                <!-- Grid column -->
+                <div class="col-md-3 mb-md-0 mb-3">
+
+                    <!-- Links -->
+                    <h5 class="text-uppercase" style="font-family: 'Orelega One', cursive;">Social</h5>
+
+                    <ul class="list-unstyled">
+                        <li>
+                            <i class="fab fa-facebook-square"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-instagram"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-twitter"></i>
+                        </li>
+                        <li>
+                            <i class="fab fa-tiktok"></i>
+                        </li>
+                    </ul>
+
+                </div>
+                <!-- Grid column -->
+
+            </div>
+            <!-- Grid row -->
+
+        </div>
+        <!-- Copyright -->
+       
+        <!-- Copyright -->
+
+    </footer>
+    <!-- Footer -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

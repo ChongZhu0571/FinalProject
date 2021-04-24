@@ -1,0 +1,68 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1 class="display-5" style="font-family: 'Orelega One', cursive; color: #f29672;">Profile</h1>
+
+<div>
+    <h3 class="display-6" style="font-family: 'Orelega One', cursive; color: #f29672;">UserInfo</h3>
+    <hr />
+    @if (Model.userInfo != null)
+    {
+<div class="card mb-2">
+    <div class="card-header font-weight-bolder text-uppercase">
+        @Html.DisplayNameFor(model => model.userInfo.lastName)
+    </div>
+    <div class="card-body">
+        <p class="card-text">@Html.DisplayFor(model => model.userInfo.lastName)</p>
+    </div>
+</div>
+                <div class="card mb-2">
+                    <div class="card-header font-weight-bolder text-uppercase">
+                        @Html.DisplayNameFor(model => model.userInfo.firstName)
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">@Html.DisplayFor(model => model.userInfo.firstName)</p>
+                    </div>
+                </div>
+                                <div class="card mb-2">
+                                    <div class="card-header font-weight-bolder text-uppercase">
+                                        @Html.DisplayNameFor(model => model.userInfo.username)
+                                    </div>
+                                    <div class="card-body">
+                                        <p class="card-text">@Html.DisplayFor(model => model.userInfo.username)</p>
+                                    </div>
+                                </div>
+                                                <div class="card mb-2">
+                                                    <div class="card-header font-weight-bolder text-uppercase">
+                                                        @Html.DisplayNameFor(model => model.userInfo.address)
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p class="card-text">@Html.DisplayFor(model => model.userInfo.address)</p>
+                                                    </div>
+                                                </div>
+                                                                <div class="card mb-2">
+                                                                    <div class="card-header font-weight-bolder text-uppercase">
+                                                                        @Html.DisplayNameFor(model => model.userInfo.email)
+                                                                    </div>
+                                                                    <div class="card-body">
+                                                                        <p class="card-text">@Html.DisplayFor(model => model.userInfo.email)</p>
+                                                                    </div>
+                                                                </div>
+                                                                                <div class="card mb-2">
+                                                                                    <div class="card-header font-weight-bolder text-uppercase">
+                                                                                        @Html.DisplayNameFor(model => model.userInfo.mobilePhone)
+                                                                                    </div>
+                                                                                    <div class="card-body">
+                                                                                        <p class="card-text">@Html.DisplayFor(model => model.userInfo.mobilePhone)</p>
+                                                                                    </div>
+                                                                                </div>} 
+    else {<button type="button" class="btn"><a href="@Url.Action("createShipInfo", "Cart")">Add a new Profile Information</a></button> }
+
+    
+
+
+                                                                            </div>

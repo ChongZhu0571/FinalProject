@@ -1,0 +1,38 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewData["Title"] = "FAQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="text-center">
+    <div class="jumbotron text-center">
+        <h1 class="display-3" style="font-family: 'Orelega One', cursive; color: #f29672;">How Can We Help?</h1>
+        <p class="lead" style="font-family: 'Raleway', sans-serif; color: #f29672;">
+            PLEASE NOTE THAT ANY ITEMS THAT ARE PURCHASED AS PART OF OUR FINAL SALE ARE NON-RETURNABLE.
+
+            AN ITEM WILL BE CONSIDERED FINAL SALE IF THE LEVEL OF DISCOUNT IS 50% OR GREATER. THIS WILL ALSO BE STATED IN THE ITEM DESCRIPTION. PLEASE CHECK THIS CAREFULLY BEFORE PLACING YOUR ORDER.
+
+            IF YOU HAVE PURCHASED AN ITEM BEFORE IT WENT INTO FINAL SALE AND ARE UNABLE TO RETURN, PLEASE CONTACT US VIA EMAIL AND PROVIDE YOUR ORDER DETAILS
+
+        </p>
+    </div>
+</div>
+<div class="container">
+    @foreach (var obj in Model.faqs)
+    {
+        <div class="row">
+            <div class="card w-100 mb-3">
+                <div class="card-header" style="font-family: 'Orelega One', cursive; color: #2858b8;">
+                    @Html.DisplayFor(model => obj.Question)
+                </div>
+                <div class="card-body">
+                    <p class="card-text">@Html.DisplayFor(model => obj.Answer)</p>
+                </div>
+            </div>
+        </div>
+    }
+    
+</div>
+
+
+

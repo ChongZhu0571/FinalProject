@@ -1,0 +1,51 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "createPaymentInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>createPaymentInfo</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h4>paymentInfo</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paymentInfo.cardNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paymentInfo.cardNo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.paymentInfo.cardNo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paymentInfo.expireDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">               
+                <input  type="date" name="expireDate"/>
+                @Html.ValidationMessageFor(model => model.paymentInfo.expireDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.paymentInfo.cvv, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.paymentInfo.cvv, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.paymentInfo.cvv, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "CheckOut")
+</div>
