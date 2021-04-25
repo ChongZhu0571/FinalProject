@@ -21,6 +21,7 @@ namespace SuperDamp.Models
         public virtual DbSet<UserInfo> UserInfos { get; set; }
         public virtual DbSet<paymentInfo> PaymentInfos { get; set; }
         public virtual DbSet<Order> orders { get; set; }
+        public virtual DbSet<Admin> Admins { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

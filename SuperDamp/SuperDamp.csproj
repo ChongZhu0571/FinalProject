@@ -128,6 +128,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CareerController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\FAQController.cs" />
@@ -147,6 +148,7 @@
       <DependentUpon>202104221701277_User.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Career.cs" />
     <Compile Include="Models\Cart.cs" />
     <Compile Include="Models\Database.cs" />
@@ -1903,9 +1905,9 @@
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\FAQ\Index.cshtml" />
     <Content Include="Views\FAQ\Create.cshtml" />
-    <Content Include="Views\FAQ\Admin.cshtml" />
+    <Content Include="Views\Admin\Admin_Faq.cshtml" />
     <Content Include="Views\FAQ\Update.cshtml" />
-    <Content Include="Views\Career\Admin.cshtml" />
+    <None Include="Views\Admin\Admin_Career.cshtml" />
     <Content Include="Views\Career\Create.cshtml" />
     <Content Include="Views\Career\Update.cshtml" />
     <Content Include="Views\Career\Index.cshtml" />
@@ -1918,6 +1920,15 @@
     <Content Include="Views\User\Profile.cshtml" />
     <Content Include="Views\User\Order.cshtml" />
     <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Admin\Logined.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Show_Message.cshtml" />
+    <Content Include="Views\Message\Success.cshtml" />
+    <Content Include="Views\Admin\Admin_Product.cshtml" />
+    <Content Include="Views\Product\Create.cshtml" />
+    <Content Include="Views\Product\Update.cshtml" />
+    <Content Include="Views\Admin\Admin_order.cshtml" />
+    <Content Include="Views\User\Ship.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

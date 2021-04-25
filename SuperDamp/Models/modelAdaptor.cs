@@ -45,6 +45,8 @@ namespace SuperDamp.Models
 
         [NotMapped]
         public bool isSelected { get; set; }
+        [NotMapped]
+        public Admin admin { get; set; }
 
     }
 }

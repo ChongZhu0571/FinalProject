@@ -1,31 +1,42 @@
 ﻿@model SuperDamp.Models.modelAdaptor
 
 @{
-    ViewBag.Title = "Message US";
+    ViewBag.Title = "Index2";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<h1 class="display-4 text-center" style="font-family: 'Orelega One', cursive; color: #f29672;">Get in touch with us !</h1>
 
-<div class="container contact-form">
-    <div class="contact-image">
-        <img src="https://image.ibb.co/kUagtU/rocket_contact.png" alt="rocket_contact" />
-    </div>
-    <form asp-action="Index">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <h3>Drop Us a Message</h3>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="text-danger">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
-                    <input asp-for="Name" class="form-control" placeholder="Your Name *" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                    @Html.LabelFor(model => model.message.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(Model => Model.message.Name, new
+                             {
+                                 htmlAttributes = new { @class = "form-control", @placeholder = "Your Name *" }
+                             })
+                    @Html.ValidationMessageFor(model => model.message.Name, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input asp-for="Email" class="form-control" placeholder="Your Email *" />
-                    <span asp-validation-for="Email" class="text-danger"></span>
+                    @Html.LabelFor(model => model.message.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(Model => Model.message.Email, new
+                             {
+                                 htmlAttributes = new { @class = "form-control", @placeholder = "Your Email *" }
+                             })
+                    @Html.ValidationMessageFor(model => model.message.Email, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
-                    <input asp-for="phoneNumber" class="form-control" placeholder="Your Phone Number *" />
-                    <span asp-validation-for="phoneNumber" class="text-danger"></span>
+                    @Html.LabelFor(model => model.message.phoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.EditorFor(Model => Model.message.phoneNumber, new
+                             {
+                                 htmlAttributes = new { @class = "form-control", @placeholder = "Your phone number *" }
+                             })
+                    @Html.ValidationMessageFor(model => model.message.phoneNumber, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
                     <input type="submit" class="btnContact" value="Send Message" />
@@ -33,10 +44,23 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    <textarea asp-for="customerMessage" class="form-control" placeholder="Your Message *" style="width: 100%; height: 150px;"></textarea>
+                    @Html.LabelFor(model => model.message.customerMessage, htmlAttributes: new { @class = "control-label col-md-2" })
+                    @Html.TextAreaFor(Model => Model.message.customerMessage, new
+               {
+                   htmlAttributes = new { @class = "form-control", @placeholder = "Your Feedback *", @style="width: 100%; height: 150px;"}
+                   })
+                    @Html.ValidationMessageFor(model => model.message.phoneNumber, "", new { @class = "text-danger" })
+                    @if (ViewBag.messageSuc != null)
+                    {
+                        <br /><br /> <h3 style="color:palevioletred">@ViewBag.messageSuc</h3>}
+
                 </div>
             </div>
         </div>
-    </form>
-</div>
+        </div>
+            }
 
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

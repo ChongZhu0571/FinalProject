@@ -15,18 +15,22 @@ namespace SuperDamp.Models
         public int Id { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 1)]
         public string Name { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 2)]
         public string Email { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 3)]
         public string phoneNumber { get; set; }
 
         [Key]
+        [Required]
         [Column(Order = 4)]
         public string customerMessage { get; set; }
     }

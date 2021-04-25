@@ -20,6 +20,7 @@ namespace SuperDamp.Models
         public string orderStatus { get; set; }
         public string orderItems { get; set; }
         public DateTime orderTime { get; set; }
+        public string trackingNumber { get; set; }
 
     }
 }

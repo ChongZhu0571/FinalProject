@@ -24,7 +24,14 @@ namespace SuperDamp.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            if (Session["adminName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
         }
 
         [HttpPost]
@@ -46,10 +53,18 @@ namespace SuperDamp.Controllers
 
         public ActionResult Update(int id)
         {
-            FAQ faq = db.FAQs.Where(f => f.Id.Equals(id)).FirstOrDefault();
-            modelAdaptor modelAdaptor = new modelAdaptor();
-            modelAdaptor.faq = faq;
-            return View(modelAdaptor);
+            if (Session["adminName"] != null)
+            {
+                FAQ faq = db.FAQs.Where(f => f.Id.Equals(id)).FirstOrDefault();
+                modelAdaptor modelAdaptor = new modelAdaptor();
+                modelAdaptor.faq = faq;
+                return View(modelAdaptor);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            
         }
         [HttpPost]
         public ActionResult Update(modelAdaptor modelAdaptor)
@@ -76,11 +91,5 @@ namespace SuperDamp.Controllers
         }
 
 
-        public ActionResult Admin()
-        {
-            modelAdaptor modelAdaptor = new modelAdaptor();
-            modelAdaptor.faqs = db.FAQs.ToList();
-            return View(modelAdaptor);
-        }
     }
 }

@@ -26,7 +26,15 @@ namespace SuperDamp.Controllers
 
         public ActionResult Create()
         {
-            return View();
+            if (Session["adminName"] != null)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+           
         }
 
         [HttpPost]
@@ -48,10 +56,18 @@ namespace SuperDamp.Controllers
 
         public ActionResult Update(int id)
         {
-            Career career = db.Careers.Where(f => f.Id.Equals(id)).FirstOrDefault();
-            modelAdaptor modelAdaptor = new modelAdaptor();
-            modelAdaptor.career = career;
-            return View(modelAdaptor);
+            if (Session["adminName"] != null)
+            {
+                Career career = db.Careers.Where(f => f.Id.Equals(id)).FirstOrDefault();
+                modelAdaptor modelAdaptor = new modelAdaptor();
+                modelAdaptor.career = career;
+                return View(modelAdaptor);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+            
         }
         [HttpPost]
         public ActionResult Update(modelAdaptor modelAdaptor)
@@ -65,7 +81,7 @@ namespace SuperDamp.Controllers
             getcareer.Hours = modelAdaptor.career.Hours;
             getcareer.roleDescription = modelAdaptor.career.roleDescription;
             db.SaveChanges();
-            return RedirectToAction("Admin");
+            return RedirectToAction("Admin_Career","Admin");
         }
         public async Task<int> SaveChangesAsync()
         {
@@ -82,13 +98,6 @@ namespace SuperDamp.Controllers
         }
 
 
-        public ActionResult Admin()
-        {
-            modelAdaptor modelAdaptor = new modelAdaptor
-            {
-                careers = db.Careers.ToList()
-            };
-            return View(modelAdaptor);
-        }
+
     }
 }

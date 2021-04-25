@@ -1,0 +1,19 @@
+﻿@model SuperDamp.Models.modelAdaptor
+
+@{
+    ViewBag.Title = "Ship";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Shipping Information</h2>
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(m => m.order.orderNo)
+    <h3 style="color:aquamarine">Tracking number:</h3>
+    <br/>
+    @Html.TextBoxFor(m => m.order.trackingNumber)
+    <input type="submit" value="Submit" />
+
+}
+
+

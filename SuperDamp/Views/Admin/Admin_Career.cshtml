@@ -24,11 +24,9 @@
             <h1 class="card-text font-weight-bolder">This is my SuperDamp</h1>
         </div>
     </div>
-    @Html.ActionLink("Create", "Create")
+    @Html.ActionLink("Create", "Create","Career")
     <div class="container">
-        @if (Model.careers.Count() > 0)
-        {
-            foreach (var obj in Model.careers)
+            @foreach (var obj in Model.careers)
             {
                 <div class="row">
                     <div class="card">
@@ -44,13 +42,12 @@
 
                         </div>
                         <div class="card-footer">
-                            @Html.ActionLink("Update", "Update", new { id = obj.Id }) |
-                            @Html.ActionLink("Delete", "Delete", new { id = obj.Id })
+                            <a href="@Url.Action("Update","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Update</a>
+                            <a href="@Url.Action("Delete","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Delete</a>
                         </div>
                     </div>
                 </div>
-            }
-        }
+            }    
     </div>
 </body>
 </html>

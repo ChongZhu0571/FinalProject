@@ -113,20 +113,36 @@ namespace SuperDamp.Controllers
 
         public new ActionResult Profile()
         {
-            modelAdaptor ma = new modelAdaptor();
-            string username = Session["username"].ToString();
-            var userInfo = db.UserInfos.Where(u => u.username.Equals(username)).FirstOrDefault();
-            ma.userInfo = userInfo;
-            return View(ma);
+            if (Session["adminName"] != null)
+            {
+                modelAdaptor ma = new modelAdaptor();
+                string username = Session["username"].ToString();
+                var userInfo = db.UserInfos.Where(u => u.username.Equals(username)).FirstOrDefault();
+                ma.userInfo = userInfo;
+                return View(ma);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+           
         }
 
         public ActionResult Order()
         {
-            modelAdaptor ma = new modelAdaptor();
-            string username = Session["username"].ToString();
-            var orderInfo = db.orders.Where(o => o.username.Equals(username)).ToList();
-            ma.orders = orderInfo;
-            return View(ma);
+            if (Session["username"] != null)
+            {
+                modelAdaptor ma = new modelAdaptor();
+                string username = Session["username"].ToString();
+                var orderInfo = db.orders.Where(o => o.username.Equals(username)).ToList();
+                ma.orders = orderInfo;
+                return View(ma);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+          
         }
 
         public ActionResult Cancel(int id)
@@ -134,6 +150,47 @@ namespace SuperDamp.Controllers
             Order order = db.orders.Where(o => o.orderNo.Equals(id)).FirstOrDefault();
             db.orders.Remove(order);
             db.SaveChanges();
+            return RedirectToAction("Order", "User");
+        }
+        public ActionResult Cancel2(int id)
+        {
+            Order order = db.orders.Where(o => o.orderNo.Equals(id)).FirstOrDefault();
+            db.orders.Remove(order);
+            db.SaveChanges();
+            return RedirectToAction("Admin_Order", "Admin");
+        }
+
+        public ActionResult Ship(int id)
+        {
+            if (Session["adminName"] != null)
+            {
+                
+                modelAdaptor ma = new modelAdaptor();
+                Order order = new Order();
+                order.orderNo = id;
+                ma.order = order;
+                return View(ma);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Admin");
+            }
+        }
+        [HttpPost]
+        public ActionResult Ship(modelAdaptor ma)
+        {
+            int orderNo = ma.order.orderNo;
+            Order order = db.orders.Where(o => o.orderNo.Equals(orderNo)).FirstOrDefault();
+            order.orderStatus = "Shipped";
+            order.trackingNumber = ma.order.trackingNumber;
+            db.SaveChanges();
+            return RedirectToAction("Admin_Order","Admin");
+        }
+
+        public ActionResult Track(int id)
+        {
+            string trackingNo = db.orders.Where(i => i.orderNo.Equals(id)).FirstOrDefault().trackingNumber;
+            Session["tracked"] = trackingNo;
             return RedirectToAction("Order", "User");
         }
     }

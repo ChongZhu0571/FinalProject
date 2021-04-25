@@ -1,0 +1,53 @@
+﻿@model SuperDamp.Models.Admin
+
+
+
+@{
+    ViewData["Title"] = "Admin Administration";
+}
+<h1>Admin Control Page</h1>
+
+<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Products
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="nav-link text-dark" href="@Url.Action("Admin_product","Admin")">Product Administration</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            FAQ
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="nav-link text-dark" href="@Url.Action("Admin_Faq","Admin")">FAQ Adminstration</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Career
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="nav-link text-dark" href="@Url.Action("Admin_Career","Admin")">Career Administration</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Messages
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="nav-link text-dark" href="@Url.Action("Show_Message","Admin")">Show All</a>
+        </div>
+    </div>
+    <div class="btn-group" role="group">
+        <button id="btnGroupDrop2" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Orders
+        </button>
+        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+            <a class="nav-link text-dark" href="@Url.Action("Admin_order","Admin")">Order Administration</a>
+        </div>
+    </div>
+</div>
+
+

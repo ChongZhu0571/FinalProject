@@ -1,0 +1,35 @@
+﻿@model IEnumerable<SuperDamp.Models.Message>
+
+@{
+    ViewBag.Title = "Show_Message";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron">
+    <h2>Customer Feedbacks</h2>
+
+</div>
+
+<div class="container">
+    @if (Model.Count()>0)
+    {
+        foreach (var obj in Model)
+        {
+            <div class="row">
+                <div class="card w-100">
+                    <div class="card-body">
+                        <p class="card-text"><span style="color: #fc5203;">Name:</span> @obj.Name</p>
+                        <p class="card-text"><span style="color: #fc5203;">Email:</span> @obj.Email</p>
+                        <p class="card-text"><span style="color: #fc5203;">Phone Number:</span> @obj.phoneNumber</p>
+                        <p class="card-text"><span style="color: #fc5203;">Message:</span> @obj.customerMessage</p>
+                        <p class="card-text"><a href="@Url.Action("reply","message")">Reply</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="@Url.Action("delete","message")">Delete</a></p>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }
+</div>
+
+
+

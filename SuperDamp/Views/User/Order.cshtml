@@ -26,10 +26,24 @@
                         @Html.DisplayFor(o => order.orderItems)
                     </td>
                     <td>
-                        @Html.DisplayFor(o => order.orderStatus)<br/><br/>
-                        <button  class="btn btn-success" onclick="location.href = '@Url.Action("Track","User",new { id=order.orderNo})'" >Track Order</button><br/><br/>
-                        <button  class="btn btn-success" onclick="location.href = '@Url.Action("Cancel","User",new { id=order.orderNo})'" >Cancel</button>
+                        @Html.DisplayFor(o => order.orderStatus)<br /><br />
+                        @if (order.orderStatus.Equals("Processing"))
+                        {
+                    <button class="btn btn-success" onclick="location.href = '@Url.Action("Cancel","User",new { id=order.orderNo})'">Cancel</button> }
+                                        else
+                                        {
+
+                                            if (Session["tracked"] != null)
+                                            {
+                                                <h3 style="color:palevioletred">@Session["tracked"]</h3>
+                                            }
+                                            else
+                                            {
+                                                <button class="btn btn-success" onclick="location.href = '@Url.Action("Track","User",new { id=order.orderNo})'">Track Order</button>
+                                            }
+                                        }
                     </td>
+                        
                 </tr>
                 @{i++;
                 }
