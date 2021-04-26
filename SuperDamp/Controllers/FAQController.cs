@@ -40,7 +40,7 @@ namespace SuperDamp.Controllers
                 db.FAQs.Add(modelAdaptor.faq);
                 db.SaveChanges();
             
-                return RedirectToAction("Admin");
+                return RedirectToAction("Admin_Faq","Admin");
         }
 
         public ActionResult Delete(int id)

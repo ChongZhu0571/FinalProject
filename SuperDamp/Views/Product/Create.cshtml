@@ -4,94 +4,114 @@
     ViewBag.Title = "Create";
     Layout = null;
 }
+<!DOCTYPE html>
 
-<h2>Create</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&family=Raleway:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-warning m-5" style="font-family: 'Orelega One', cursive; color: #ff661a;">
+    <h4 class="display-6 mb-3" style="font-family: 'Orelega One', cursive; color: #f29672;"><span class="mr-3 p-2 bg-danger text-white" style=" border-radius: 10px;">SuperDamp</span></h4>
+    <h2 class="display-6 " style="font-family: 'Orelega One', cursive; color: #ff661a;">Create</h2>
 
 
-@using (Html.BeginForm())
-{
-    
-<div class="form-horizontal">
-    <h4>User</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @using (Html.BeginForm())
+    {
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.EditorFor(Model => Model.Name, new
-                            {
-                                htmlAttributes = new { @class = "form-control" }
-                            })
-            @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+        <div class="form-horizontal w-50">
+            <h4 class="display-6 " style="font-family: 'Orelega One', cursive; color: #ff661a;">Product</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(Model => Model.Name, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control" }
+                                    })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(Model => Model.Price, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control" }
+                                    })
+                    @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(Model => Model.imageURL, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control" }
+                                    })
+                    @Html.ValidationMessageFor(model => model.imageURL, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(Model => Model.Description, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control" }
+                                    })
+                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label" })
+                <div>
+                    @Html.EditorFor(Model => Model.Sex, new
+                                    {
+                                        htmlAttributes = new { @class = "form-control" }
+                                    })
+                    @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(Model => Model.Category, new
+                {
+                     htmlAttributes = new { @class = "form-control" }
+                 })
+                @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
+                @if (ViewBag.error != null)
+                {
+                    <span class="badge badge-danger">@ViewBag.error</span>}
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="">
+                    <button type="submit" class="btn btn-success">Create</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.EditorFor(Model => Model.Price, new
-                            {
-                                htmlAttributes = new { @class = "form-control" }
-                            })
-            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.imageURL, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.EditorFor(Model => Model.imageURL, new
-                            {
-                                htmlAttributes = new { @class = "form-control" }
-                            })
-            @Html.ValidationMessageFor(model => model.imageURL, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.EditorFor(Model => Model.Description, new
-                            {
-                                htmlAttributes = new { @class = "form-control" }
-                            })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Sex, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div>
-            @Html.EditorFor(Model => Model.Sex, new
-                            {
-                                htmlAttributes = new { @class = "form-control" }
-                            })
-            @Html.ValidationMessageFor(model => model.Sex, "", new { @class = "text-danger" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
-        @Html.EditorFor(Model => Model.Category, new
-        {
-             htmlAttributes = new { @class = "form-control" }
-         })
-        @Html.ValidationMessageFor(model => model.Category, "", new { @class = "text-danger" })
-        @if (ViewBag.error != null)
-        {
-            <span class="badge badge-danger">@ViewBag.error</span>}
+    }
+
+    <div>
+        @Html.ActionLink("Back to List", "Admin_Product", "Admin")
     </div>
 
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <button type="submit" class="btn btn-success">Sign in</button>
-        </div>
-    </div>
-</div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Admin_Product","Admin")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <footer class="text-center  m-3">
+        <span class="display-6 " style="font-family: 'Orelega One', cursive; color: #ff661a;">2021 SuperDamp</span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

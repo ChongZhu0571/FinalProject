@@ -43,7 +43,7 @@ namespace SuperDamp.Controllers
             db.Careers.Add(modelAdaptor.career);
             db.SaveChanges();
 
-            return RedirectToAction("Admin");
+            return RedirectToAction("Admin_Career", "Admin");
         }
 
         public ActionResult Delete(int id)
@@ -51,7 +51,7 @@ namespace SuperDamp.Controllers
             Career career = db.Careers.Where(f => f.Id.Equals(id)).FirstOrDefault();
             db.Careers.Remove(career);
             db.SaveChanges();
-            return RedirectToAction("Admin");
+            return RedirectToAction("Admin_Career","Admin");
         }
 
         public ActionResult Update(int id)

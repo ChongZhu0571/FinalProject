@@ -6,12 +6,12 @@
 }
 
 
-
+<h1 class="text-center">Get in touch with us !</h1>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
-    <div class="text-danger">
+    <div class="text-danger container contact-form">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
@@ -44,18 +44,21 @@
             </div>
             <div class="col-md-6">
                 <div class="form-group">
-                    @Html.LabelFor(model => model.message.customerMessage, htmlAttributes: new { @class = "control-label col-md-2" })
-                    @Html.TextAreaFor(Model => Model.message.customerMessage, new
-               {
-                   htmlAttributes = new { @class = "form-control", @placeholder = "Your Feedback *", @style="width: 100%; height: 150px;"}
-                   })
-                    @Html.ValidationMessageFor(model => model.message.phoneNumber, "", new { @class = "text-danger" })
-                    @if (ViewBag.messageSuc != null)
-                    {
-                        <br /><br /> <h3 style="color:palevioletred">@ViewBag.messageSuc</h3>}
+                    <div class="row">
+                        @Html.LabelFor(model => model.message.customerMessage, htmlAttributes: new { @class = "control-label col-md-2" })</div>
+                        <div class="row">
+                            @Html.TextAreaFor(Model => Model.message.customerMessage, new
+                       {
+                           htmlAttributes = new { @class = "form-control", @placeholder = "Your Feedback *", @style = "width: 100%; height: 150px;" }
+                           })
+                            @Html.ValidationMessageFor(model => model.message.phoneNumber, "", new { @class = "text-danger" })
+                            @if (ViewBag.messageSuc != null)
+                            {
+                                <br /><br /> <h3 style="color:palevioletred">@ViewBag.messageSuc</h3>}
+                        </div>
 
+                    </div>
                 </div>
-            </div>
         </div>
         </div>
             }

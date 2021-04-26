@@ -1,18 +1,20 @@
 ﻿@model SuperDamp.Models.modelAdaptor
-@{
-    Layout = null;
-}
+@{ Layout = null; }
 
 <!DOCTYPE html>
 
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Admin</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orelega+One&family=Raleway:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-warning m-5" >
+
     <div class="jumbotron">
-        <h1 class="display-3">Admin Page for Careers</h1>
+        <h1 class="display-3" style="font-family: 'Orelega One', cursive; color: #ff661a;">Admin Page for Careers</h1>
 
     </div>
     <div class="card">
@@ -24,30 +26,36 @@
             <h1 class="card-text font-weight-bolder">This is my SuperDamp</h1>
         </div>
     </div>
-    @Html.ActionLink("Create", "Create","Career")
-    <div class="container">
-            @foreach (var obj in Model.careers)
-            {
-                <div class="row">
-                    <div class="card">
-                        <div class="card-header">
-                            <span style="color: #fc5203;">Job Title:</span> @obj.jobTitle
-                        </div>
-                        <div class="card-body">
-                            <p class="card-text"><span style="color: #fc5203;">Type:</span> @obj.Type</p>
-                            <p class="card-text"><span style="color: #fc5203;">Reference:</span> @obj.Reference</p>
-                            <p class="card-text"><span style="color: #fc5203;">Hours:</span> @obj.Hours</p>
-                            <p class="card-text"><span style="color: #fc5203;">Location:</span> @obj.Location</p>
-                            <p class="card-text"><span style="color: #fc5203;">Role Description:</span> @obj.roleDescription</p>
+    <span class="display-5 ml-1" style="font-family: 'Orelega One', cursive; color: #ff661a;">Create New Career HERE: </span><button class="btn btn-default p-1 m-4 text-white">@Html.ActionLink("Create", "Create", "Career")</button>
+    <div class="container mt-3">
+        @foreach (var obj in Model.careers)
+        {
+<div class="row">
+    <div class="card">
+        <div class="card-header">
+            <span style="color: #fc5203;">Job Title:</span> @obj.jobTitle
+        </div>
+        <div class="card-body">
+            <p class="card-text"><span style="color: #fc5203;">Type:</span> @obj.Type</p>
+            <p class="card-text"><span style="color: #fc5203;">Reference:</span> @obj.Reference</p>
+            <p class="card-text"><span style="color: #fc5203;">Hours:</span> @obj.Hours</p>
+            <p class="card-text"><span style="color: #fc5203;">Location:</span> @obj.Location</p>
+            <p class="card-text"><span style="color: #fc5203;">Role Description:</span> @obj.roleDescription</p>
 
-                        </div>
-                        <div class="card-footer">
-                            <a href="@Url.Action("Update","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Update</a>
-                            <a href="@Url.Action("Delete","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Delete</a>
-                        </div>
-                    </div>
-                </div>
-            }    
+        </div>
+        <div class="card-footer">
+            <a href="@Url.Action("Update","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Update</a>
+            <a href="@Url.Action("Delete","Career", new { id = obj.Id })" class="btn btn-danger mx-2 mb-1">Delete</a>
+        </div>
     </div>
+</div>      }
+    </div>
+
+    <footer class="text-center  m-3">
+        <span class="display-6 " style="font-family: 'Orelega One', cursive; color: #ff661a;">2021 SuperDamp</span>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

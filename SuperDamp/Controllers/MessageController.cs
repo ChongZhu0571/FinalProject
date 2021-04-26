@@ -27,5 +27,18 @@ namespace SuperDamp.Controllers
             db.SaveChanges();           
             return View("success");
         }
+
+        public ActionResult reply()
+        {
+            return RedirectToAction("Show_Message", "admin");
+        }
+
+        public ActionResult delete(int id)
+        {
+            Message message = db.Messages.Where(i => i.Id.Equals(id)).FirstOrDefault();
+            db.Messages.Remove(message);
+            db.SaveChanges();
+            return RedirectToAction("Show_Message", "admin");
+        }
     }
 }

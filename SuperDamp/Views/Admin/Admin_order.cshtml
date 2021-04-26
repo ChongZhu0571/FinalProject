@@ -31,7 +31,7 @@
             @if (order.orderStatus.Equals("Processing"))
             {
                 <button class="btn btn-success" onclick="location.href = '@Url.Action("Ship", "User", new { id = order.orderNo })'">Ship</button><br /><br />
-                <button class="btn btn-success" onclick="location.href = '@Url.Action("Cancel2", "User", new { id = order.orderNo })'">Cancel</button>
+                <button class="btn btn-danger" onclick="location.href = '@Url.Action("Cancel2", "User", new { id = order.orderNo })'">Cancel</button>
             }
 
         </td>
